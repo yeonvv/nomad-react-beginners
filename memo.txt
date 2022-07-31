@@ -1,0 +1,11 @@
+css 파일의 확장자를 .module.css 로 하면 css 클래스가 중첩되는 것을 완벽히 방지할 수 있다
+    ex) App.module.css 에서의 title클래스와, Btn.module.css 의 title클래스는 이름이 같아도 전혀 다른 기능을 수행할 수 있다
+
+<React.StrictMode> : create-react-app으로 설치했을때 index.js 파일에 기본적으로 생성되는 태그이다
+    태그안에 감싸져 있는 자식까지 검사를 진행하여 리렌더가 두번 이상 실행될 수 있다
+
+useEffect : 처음 render 할 때 실행되고, 그 뒤로는 render되어도 실행되지 않게한다
+    두개의 args를 가지는 function
+        첫번째 : 실행하고 싶은 코드
+        두번째 : 실행되는 조건 : useState의 data값을 넣는다 : 해당 data값이 useState에 의해 render 될 때만 render되어진다
+            []이면 처음 브라우저가 render되었을때만 실행하고 그후엔 절대 실행되지 않는다
