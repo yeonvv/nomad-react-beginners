@@ -3,28 +3,33 @@ import { useState, useEffect } from "react";
 function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const onNewTodo = (event) => setTodo(event.target.value);
+  const onChange = (event) => {
+    setTodo(event.target.value);
+  };
   const onSubmit = (event) => {
     event.preventDefault();
-    if (todo === "") {
-      return;
+    if (todo !== "") {
+      setTodos((currValue) => [todo, ...currValue]);
+      setTodo("");
     }
-    setTodos((currValue) => [todo, ...currValue]);
-    setTodo("");
   };
-  console.log(todos);
   return (
     <div>
-      <h1>My To Dos ({todos.length})</h1>
-      <form onClick={onSubmit}>
+      <h1>My ToDos ({todos.length})</h1>
+      <form>
         <input
-          onChange={onNewTodo}
           type="text"
           value={todo}
-          placeholder="Write your to do..."
+          placeholder="Write your To Do..."
+          onChange={onChange}
         />
-        <button>Add To Do</button>
+        <button onClick={onSubmit}>Add To Do</button>
       </form>
+      <ul>
+        {todos.map((el, idx) => (
+          <li key={idx}>{el}</li>
+        ))}
+      </ul>
     </div>
   );
 }
