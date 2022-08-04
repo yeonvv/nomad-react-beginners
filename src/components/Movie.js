@@ -7,7 +7,7 @@ function Movie({ poster, title, summary, genres, id }) {
         <img src={poster} />
         <h3>{title}</h3>
       </Link>
-      <p>{summary}</p>
+      <p>{summary.length > 235 ? `${summary.slice(0, 236)}...` : summary}</p>
       {genres.map((g) => (
         <li key={g}>{g}</li>
       ))}
